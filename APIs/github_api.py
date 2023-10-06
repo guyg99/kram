@@ -9,8 +9,8 @@ logging.getLogger('github').setLevel(logging.WARNING)
 
 g = Github(GITHUB_API_KEY)
 
-def get_repo_name_and_desc(owner,repo_name):
-    # Replace OWNER and REPO with the repository's owner and name
-    repo = g.get_repo("guyg99/kram")
-    return repo.name, repo.description
+def get_repo_from_url(repo_url):
+    owner, name = repo_url.split('/')[-2:]
+    repo = g.get_repo(f"{owner}/{name}")
+    return repo
 
